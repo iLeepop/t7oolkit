@@ -1,0 +1,30 @@
+.sidebar-nav {
+  width: 220px;
+  min-width: 220px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.sidebar-button {
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sidebar-button:hover {
+  background: var(--color-sidebar-active);
+  color: var(--color-accent);
+}
+
+.sidebar-button-active {
+  background: var(--color-sidebar-active);
+  color: var(--color-accent);
+  font-weight: 700;
+}

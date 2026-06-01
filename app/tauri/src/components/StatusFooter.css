@@ -1,0 +1,10 @@
+.status-footer {
+  background: var(--color-footer-bg);
+  border-top: 1px solid var(--color-border);
+  padding: 10px 24px;
+}
+
+.status-text {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}

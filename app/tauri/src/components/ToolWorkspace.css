@@ -1,0 +1,41 @@
+.tool-workspace {
+  padding: 24px;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-workspace-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tool-workspace-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.tool-workspace-body {
+  flex: 1;
+  min-height: 0;
+}

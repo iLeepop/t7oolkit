@@ -1,0 +1,11 @@
+:root {
+  --color-bg: #F5F5F7;
+  --color-surface: #FFFFFF;
+  --color-border: #E5E5EA;
+  --color-accent: #007AFF;
+  --color-accent-hover: #0066DD;
+  --color-text: #1D1D1F;
+  --color-text-secondary: #86868B;
+  --color-sidebar-active: #E8F2FF;
+  --color-footer-bg: #FAFAFA;
+}

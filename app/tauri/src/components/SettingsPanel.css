@@ -1,0 +1,85 @@
+.settings-panel {
+  padding: 24px;
+  overflow: auto;
+  height: 100%;
+}
+
+.settings-form {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px 16px;
+  align-items: center;
+  max-width: 640px;
+}
+
+.field-label {
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.field-input {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.field-input-narrow {
+  max-width: 120px;
+}
+
+.field-row {
+  display: flex;
+  gap: 8px;
+}
+
+.field-row .field-input {
+  flex: 1;
+}
+
+.settings-actions {
+  margin-top: 24px;
+}
+
+.settings-message {
+  margin-top: 12px;
+}
+
+.accent-button {
+  border: none;
+  background: var(--color-accent);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.accent-button:hover {
+  background: var(--color-accent-hover);
+}
+
+.accent-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.secondary-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}

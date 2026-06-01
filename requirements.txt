@@ -1,2 +1,0 @@
-# Tkinter is included in the standard library.
-# Add third-party dependencies here when needed.

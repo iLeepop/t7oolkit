@@ -1,0 +1,2 @@
+# Tkinter is included in the standard library.
+Pillow>=10.0

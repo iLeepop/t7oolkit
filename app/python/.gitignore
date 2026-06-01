@@ -96,9 +96,3 @@ pip-delete-this-directory.txt
 
 # Cython
 cython_debug/
-
-# Rust
-target/
-
-# AI
-.cursor/

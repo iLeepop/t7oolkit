@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "A Tkinter-based desktop toolkit application"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "Pillow>=10.0",
+]
 
 [project.optional-dependencies]
 build = ["pyinstaller>=6.0"]

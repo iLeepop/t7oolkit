@@ -1,8 +1,8 @@
 mod config;
-mod image_resize;
+mod tools;
 
 use config::{load_config, save_config};
-use image_resize::batch_resize_images_command;
+use tools::batch_resize_images_command;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {

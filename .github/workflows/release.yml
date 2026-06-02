@@ -108,9 +108,51 @@ jobs:
           path: app/tauri/dist/release/*
           if-no-files-found: error
 
+  build-tauri-portable:
+    name: Build Tauri portable (Windows)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/tauri/package-lock.json
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: app/tauri/src-tauri -> target
+
+      - name: Install frontend dependencies
+        working-directory: app/tauri
+        run: npm ci
+
+      - name: Build portable binary
+        working-directory: app/tauri
+        run: npm run build:portable
+
+      - name: Package portable zip
+        shell: pwsh
+        run: ./app/tauri/scripts/package-portable.ps1
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: t7oolkit-tauri-windows-portable
+          path: app/tauri/dist/release/*-portable.zip
+          if-no-files-found: error
+
   release:
     name: Publish GitHub Release
-    needs: [build-python, build-tauri]
+    needs: [build-python, build-tauri, build-tauri-portable]
     runs-on: ubuntu-latest
 
     steps:

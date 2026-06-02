@@ -22,7 +22,9 @@ app/tauri/
 ├── src-tauri/           # Rust 后端
 │   └── src/
 │       ├── config.rs    # 共享配置读写
-│       └── image_resize.rs
+│       └── tools/       # 工具后端逻辑
+│           ├── mod.rs
+│           └── img_rect640.rs
 └── package.json
 ```
 
@@ -64,8 +66,22 @@ Release 资产包括：
 |------|---------|-------|
 | Python | `t7oolkit-*-windows.zip` | `t7oolkit-*-macos.zip` |
 | Tauri | `t7oolkit_*-setup.exe` | `t7oolkit_*_aarch64.dmg` |
+| Tauri 便携版 (Windows) | `t7oolkit-*-windows-portable.zip`（解压后直接运行 `t7oolkit.exe`） | — |
 
 CI 工作流见 [`.github/workflows/tauri-ci.yml`](../../.github/workflows/tauri-ci.yml) 与 [`.github/workflows/release.yml`](../../.github/workflows/release.yml)。
+
+### Windows 便携版（本地构建）
+
+无需安装程序，解压 zip 后双击 `t7oolkit.exe` 即可运行（系统需已安装 [WebView2 运行时](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)）：
+
+```powershell
+cd app/tauri
+npm install
+npm run build:portable
+npm run package:portable
+```
+
+产物：`dist/release/t7oolkit-<version>-windows-portable.zip`
 
 ## 配置格式
 
@@ -85,4 +101,4 @@ CI 工作流见 [`.github/workflows/tauri-ci.yml`](../../.github/workflows/tauri
 1. 在 `src/tools/` 新建 React 组件，实现 `ToolProps` 接口
 2. 在 `src/registry/tools.ts` 的 `registerAllTools()` 中注册
 
-如需 Rust 能力，在 `src-tauri/src/` 添加模块并在 `lib.rs` 注册 command。
+如需 Rust 能力，在 `src-tauri/src/tools/` 新建模块并在 `tools/mod.rs` 与 `lib.rs` 中注册 command。

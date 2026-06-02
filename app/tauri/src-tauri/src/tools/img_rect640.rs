@@ -151,7 +151,8 @@ pub fn batch_resize_images(
                     },
                 );
 
-                match resize_image(path, &output_dir.join(path.file_name().unwrap_or_default()), max_size) {
+                match resize_image(path, &output_dir.join(path.file_name().unwrap_or_default()), max_size)
+                {
                     Ok(result) => Ok(result),
                     Err(message) => Err(ResizeError { filename, message }),
                 }

@@ -1,0 +1,53 @@
+name: Tauri CI
+
+on:
+  push:
+    paths:
+      - "app/tauri/**"
+      - ".github/workflows/tauri-ci.yml"
+      - ".github/workflows/release.yml"
+  pull_request:
+    paths:
+      - "app/tauri/**"
+      - ".github/workflows/tauri-ci.yml"
+      - ".github/workflows/release.yml"
+
+jobs:
+  check:
+    name: Check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/tauri/package-lock.json
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: app/tauri/src-tauri -> target
+
+      - name: Install frontend dependencies
+        working-directory: app/tauri
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: app/tauri
+        run: npm run build
+
+      - name: Check Rust backend
+        working-directory: app/tauri/src-tauri
+        run: cargo check

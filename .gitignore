@@ -99,6 +99,8 @@ cython_debug/
 
 # Rust
 target/
+app/tauri/node_modules/
+app/tauri/dist/
 
 # AI
 .cursor/

@@ -5,10 +5,12 @@ on:
     paths:
       - "app/python/**"
       - ".github/workflows/python-ci.yml"
+      - ".github/workflows/release.yml"
   pull_request:
     paths:
       - "app/python/**"
       - ".github/workflows/python-ci.yml"
+      - ".github/workflows/release.yml"
 
 defaults:
   run:
